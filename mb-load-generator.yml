@@ -12,7 +12,7 @@ spring:
 
 generator:
   dataType: SMSSENDREQUEST
-  loadCount: 1
+  loadCount: 2
                       
 server:
   port: 9001
