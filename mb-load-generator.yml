@@ -1,1 +1,54 @@
+spring:
+  application:
+    name: mb-load-generator
 
+  cloud:
+    stream:
+      bindings:
+        outputTopic:
+          destination: cxmout.sms_send_request
+          content-type: application/json
+          
+
+generator:
+  dataType: SMSSENDREQUEST
+  loadCount: 1
+                      
+server:
+  port: 9001
+
+
+logging:
+  config: classpath:console-logback-spring.xml
+
+---
+
+spring:
+  profiles: local,dev,junit
+
+logger-path: /var/log
+
+logging:
+  config: classpath:console-logback-spring.xml
+    
+---
+
+spring:
+  profiles: sysdev,qa,preprod,prod,appdev
+
+logger-path: /opt/tomcat/latest/logs/cxm-outbound
+
+logging:
+  config: classpath:console-logback-spring.xml
+
+---
+logging:
+  config: classpath:logback-spring.xml
+  file: ${logger-path}/mb-load-generator/mb-load-generator.log
+  level:
+    root: ERROR
+    com:
+      west:
+        brickhouse: DEBUG
+
+  
