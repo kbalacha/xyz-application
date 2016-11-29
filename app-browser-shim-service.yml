@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: app-browser-shim-service
+
+  jersey:
+    application-path: /api
+
+server:
+  servlet-path: /
+      
+
+info:
+  build:
+    artifact: '@project.artifactId@'
+    version: '@project.version@'
+    revision: '@buildNumber@'    
+    
+---
+
+spring: 
+  profiles: local,dev,junit
+  
+logging:
+  config: classpath:console-logback-spring.xml
+  
+logger-path: /var/log
+---
+
+spring:
+  profiles: sysdev,qa,preprod,prod,appdev
+
+logger-path: /opt/tomcat/latest/logs/cxm-outbound
+
+---
+logging:
+  config: classpath:logback-spring.xml
+  file: ${logger-path}/app-browser-shim-service/app-browser-shim-service.log
+  level:
+    root: ERROR
+    com:
+      west:
+        brickhouse:
+          service:
+           shim:
+            browser:
+             app: DEBUG
+
+    org:
+      hibernate: DEBUG
+  
+
