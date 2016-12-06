@@ -7,7 +7,9 @@ spring:
 
 server:
   servlet-path: /
-    
+
+hello:
+  configMessage: bzzt
 ---
 
 spring: 
@@ -24,7 +26,8 @@ spring:
 
 logger-path: /opt/tomcat/latest/logs/cxm-outbound
 
-aprop: somehtingsomthing
+hello:
+  configMessage: bzztqa
 
 ---
 logging:
