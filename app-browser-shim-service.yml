@@ -24,13 +24,11 @@ spring:
 
 logger-path: /opt/tomcat/latest/logs/cxm-outbound
 
-logging:
-  config: classpath:console-logback-spring.xml
 
 ---
 logging:
   config: classpath:logback-spring.xml
-  file: ${logger-path}/app-browser-shim-service/app-browser-shim-service.log
+  file: ${logger-path}/app-browser-shim-service-snapshot/app-browser-shim-service.log
   level:
     root: ERROR
     com:
