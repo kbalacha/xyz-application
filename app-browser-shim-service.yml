@@ -7,13 +7,6 @@ spring:
 
 server:
   servlet-path: /
-      
-
-info:
-  build:
-    artifact: '@project.artifactId@'
-    version: '@project.version@'
-    revision: '@buildNumber@'    
     
 ---
 
