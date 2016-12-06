@@ -39,9 +39,6 @@ logging:
           service:
            shim:
             browser:
-             app: DEBUG
-
-    org:
-      hibernate: DEBUG
+             app: INFO
   
 
