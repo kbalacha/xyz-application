@@ -24,6 +24,7 @@ spring:
 
 logger-path: /opt/tomcat/latest/logs/cxm-outbound
 
+aprop: somehtingsomthing
 
 ---
 logging:
