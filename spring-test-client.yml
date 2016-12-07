@@ -25,7 +25,7 @@ logger-path: /opt/tomcat/latest/logs/cxm-outbound
 
 logging:
   config: classpath:logback-spring.xml
-  file: ${logger-path}/white-list-component/white-list-component.log
+  file: ${logger-path}/spring-test-client/spring-test-client.log
   level:
     root: ERROR
     com:
