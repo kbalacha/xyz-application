@@ -2,6 +2,9 @@ spring:
   application:
     name: spring-test-client
 
+hello:
+  configMessage: HelloKarttttt
+
 ---
 
 spring:
