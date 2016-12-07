@@ -26,6 +26,9 @@ spring:
 
 logger-path: /opt/tomcat/latest/logs/cxm-outbound
 
+logging:
+  config: classpath:console-logback-spring.xml
+
 hello:
   configMessage: bzztqa
 
