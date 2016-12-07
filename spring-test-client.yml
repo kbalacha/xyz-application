@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: spring-test-client
+
+---
+
+spring:
+  profiles: local,dev,junit
+
+logging:
+  config: classpath:console-logback-spring.xml
+
+logger-path: /var/log
+  
+---
+
+spring:
+  profiles: sysdev,appdev,qa,preprod,prod
+
+logger-path: /opt/tomcat/latest/logs/cxm-outbound
+---
+
+logging:
+  config: classpath:logback-spring.xml
+  file: ${logger-path}/white-list-component/white-list-component.log
+  level:
+    root: ERROR
+    com:
+      west:
+        brickhouse:
+          whitelist: INFO
+
+
