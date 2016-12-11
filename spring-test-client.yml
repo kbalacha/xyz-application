@@ -3,7 +3,7 @@ spring:
     name: spring-test-client
 
 hello:
-  configMessage: HelloKarttttt
+  configMessage: HelloKartttttfromGit
 
 ---
 
