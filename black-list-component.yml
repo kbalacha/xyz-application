@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: black-list-component
+       
+  cloud:
+    stream:
+      rabbit:
+        bindings:
+          outputCampaignEvent:
+            producer:
+              auto-bind-dlq: true
+          outputRetry:
+            producer:
+              auto-bind-dlq: true
+
+      bindings:
+        outputCampaignEvent:
+          destination: cxmout.orchestration
+          content-type: application/json      
+        outputRetry:
+          destination: cxmout.retry
+          content-type: application/json        
+ 
+  jersey:
+    application-path: /api
+    
+server:
+  servlet-path: /
+  port: 9234
+ 
+---
+
+spring:
+  profiles: local,dev,junit
+  
+logging:
+  config: classpath:console-logback-spring.xml
+
+logger-path: /var/log
+---
+
+spring:
+  profiles: sysdev,qa,preprod,prod,appdev
+
+logger-path: /opt/tomcat/latest/logs/cxm-outbound
+
+---
+
+logging:
+  config: classpath:logback-spring.xml
+  file: ${logger-path}/black-list-component/black-list-component.log
+  level:
+    root: ERROR
+    com:
+      west:
+        brickhouse:
+          blacklist: INFO  
