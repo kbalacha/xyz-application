@@ -1,0 +1,69 @@
+spring:
+  application:
+    name: sms-shim-service
+
+  cloud:
+    stream:
+      rabbit:
+        bindings:
+          outputSMSSendRequest:
+            producer:
+              auto-bind-dlq: true
+
+           
+      bindings:
+        outputSMSSendRequest:
+          destination: cxmout.sms_send_request
+          content-type: application/json 
+                         
+  jersey:
+    application-path: /api
+
+server:
+ servlet-path: / 
+ 
+disposition:
+  interpreter:
+    serviceTypeTo: WIMP
+
+
+swagger:
+  configId: smsshimservices
+  description: SMS SHIM SERVICES API
+  title: SMS SHIM SERVICES API
+  
+
+---
+  api:
+    uuidTags:
+      url:
+        http://10.27.250.225/services/UuidService/api/uuid/
+
+---
+spring:
+  profiles: local,dev,junit
+
+logging:
+  config: classpath:console-logback-spring.xml
+
+logger-path: /var/log
+---
+
+spring:
+  profiles: sysdev,appdev,qa,preprod,prod
+
+logger-path: /opt/tomcat/latest/logs/cxm-outbound
+
+---
+
+logging:
+  config: classpath:logback-spring.xml
+  file: ${logger-path}/sms-shim-service/sms-shim-service.log
+  level:
+    root: ERROR
+    com:
+      west:
+        brickhouse:
+          sms:
+            shim: INFO
+
