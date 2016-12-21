@@ -1,2 +1,3 @@
 #prod  configurations
 env: prod
+prodProp1: abc
