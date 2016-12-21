@@ -1,5 +1,3 @@
-#prod  configurations
+aprop: isprop
 prodProp1: abc
-env: dev
-#adding this in dev
 
