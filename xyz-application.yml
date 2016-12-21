@@ -1,2 +1,3 @@
 #prod  configurations
-env: prod
+env: dev
+#adding this in dev
